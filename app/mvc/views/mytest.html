@@ -1,0 +1,25 @@
+<div ng-style="TodoLoadedStyle">
+	<h2>{{ title }}</h2>
+	<span>{{ remaining() }} of {{ todos.length }} remaining</span>
+	[ <a href="" ng-click="archive()">archive</a> ]
+	<ul class="unstyled">
+		<li ng-repeat="todo in todos">
+			<label class="checkbox">
+				<input type="checkbox" ng-model="todo.done">
+				<span ng-copy="OnCopy()" class="done-{{ todo.done }}"
+				      ng-bind-html="todo.text | toBold | toItalic"></span>
+			</label>
+		</li>
+	</ul>
+	<form ng-submit="addTodo()">
+		<input type="text" ng-model="todoText" size="30"
+		       placeholder="add new todo here" ng-paste="OnPast()">
+		<input class="btn-primary" type="submit" value="add">
+	</form>
+	<div ng-bind-html="myHtmlVar | trustAsHtml"></div>
+	<div ng-bind-html="myHtmlVar + ' coucou' | toBold | toUnderline | toItalic"></div>
+	<button ng-click="loaded = false">close</button>
+</div>
+<div ng-style="Part2LoadedStyle">
+	<button ng-click="loaded = true">Re Load</button>
+</div>
